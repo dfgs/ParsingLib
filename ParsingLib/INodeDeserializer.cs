@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ParsingLib
 {
-	public interface INodeDeserializer<T,ResultT>
+	public interface INodeDeserializer<T>
 	{
-		ResultT Deserialize(INonTerminalNode<T> Node);
+		object Deserialize(INonTerminalNode<T> Node);
 	}
 }

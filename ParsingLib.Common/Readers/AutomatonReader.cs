@@ -13,14 +13,14 @@ namespace ParsingLib.Common.Readers
 	{
 		private IAutomaton<T> automaton;
 		private IReader<T> itemReader;
-		private INodeDeserializer<T, TResult> deserializer;
+		private INodeDeserializer<T> deserializer;
 
 		public bool EOF
 		{
 			get { return itemReader.EOF; }
 		}
 
-		public AutomatonReader(IAutomaton<T> Automaton, IReader<T> ItemReader, INodeDeserializer<T, TResult> Deserializer)
+		public AutomatonReader(IAutomaton<T> Automaton, IReader<T> ItemReader, INodeDeserializer<T> Deserializer)
 		{
 			if (Automaton == null) throw new ArgumentNullException("Automaton");
 			if (ItemReader == null) throw new ArgumentNullException("ItemReader");
@@ -78,7 +78,7 @@ namespace ParsingLib.Common.Readers
 			itemReader.Seek(currentPosition);
 			node = automaton.Accept();
 
-			return deserializer.Deserialize(node);
+			return (TResult)deserializer.Deserialize(node);
 
 		}
 	}

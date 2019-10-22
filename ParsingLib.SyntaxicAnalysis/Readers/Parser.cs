@@ -17,7 +17,7 @@ namespace ParsingLib.SyntaxicAnalysis.Readers
     {
 		
 
-		public Parser(IAutomaton<Token> Automaton,IReader<Token> ItemReader, INodeDeserializer<Token, TResult> NodeDeserializer):base(Automaton,ItemReader,NodeDeserializer)
+		public Parser(IAutomaton<Token> Automaton,IReader<Token> ItemReader, INodeDeserializer<Token> NodeDeserializer):base(Automaton,ItemReader,NodeDeserializer)
 		{
 			
 		}

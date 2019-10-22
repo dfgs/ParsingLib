@@ -17,7 +17,7 @@ namespace ParsingLib.LexicalAnalysis.Readers
     public class Lexer:AutomatonReader<char,Token>,ILexer
     {
 	
-		public Lexer(IAutomaton<char> Automaton,ICharReader ItemReader,INodeDeserializer<char,Token> NodeDeserializer):base(Automaton,ItemReader, NodeDeserializer)
+		public Lexer(IAutomaton<char> Automaton,ICharReader ItemReader,INodeDeserializer<char> NodeDeserializer):base(Automaton,ItemReader, NodeDeserializer)
 		{
 			
 		}

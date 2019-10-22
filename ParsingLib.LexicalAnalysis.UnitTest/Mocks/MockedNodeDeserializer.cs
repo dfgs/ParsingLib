@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ParsingLib.LexicalAnalysis.UnitTest.Mocks
 {
-	public class MockedNodeDeserializer : INodeDeserializer<char, Token>
+	public class MockedNodeDeserializer : INodeDeserializer<char>
 	{
-		public Token Deserialize(INonTerminalNode<char> Node)
+		public object Deserialize(INonTerminalNode<char> Node)
 		{
 			return new Token(Node.Input.Name, OnDeserialize(Node));
 		}

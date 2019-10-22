@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ParsingLib.SyntaxicAnalysis
 {
-	public class LexicalRuleNodeDeserializer : INodeDeserializer<Token, IRule<char>>
+	public class LexicalRuleNodeDeserializer : INodeDeserializer<Token>
 	{
 
-		public IRule<char> Deserialize(INonTerminalNode<Token> Node)
+		public object Deserialize(INonTerminalNode<Token> Node)
 		{
 			return null;
 		}

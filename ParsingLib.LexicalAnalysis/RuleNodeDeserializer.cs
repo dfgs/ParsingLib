@@ -1,50 +1,54 @@
 ﻿using FSMLib.Automatons;
 using FSMLib.SyntaxicAnalysis;
-using System;
-using System.Collections.Generic;
+using ParsingLib.Common;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ParsingLib.LexicalAnalysis
 {
-	public class RuleNodeDeserializer : INodeDeserializer<char, Token>
+	public class RuleNodeDeserializer : BaseNodeDeserializer<char>
 	{
 
-		public Token Deserialize(INonTerminalNode<char> Node)
-		{
-			return new Token(Node.Input.Name, OnDeserialize(Node));
-		}
 
-		protected string OnDeserialize(INonTerminalNode<char> Node)
+		protected override object OnDeserializeNonTerminalNode(INonTerminalNode<char> Node)
 		{
 			StringBuilder sb;
 
-			if (Node.Input.Name=="EscapedChar")
+			switch (Node.Input.Name)
 			{
-				return OnDeserialize(Node.Nodes.ElementAt(1));
+				case "EscapedChar": return OnDeserialize(Node.Nodes.ElementAt(1));
+				case "NonEscapedChar": return OnDeserialize(Node.Nodes.First());
+
+				case "Letter": return new Token(Node.Input.Name, OnDeserialize(Node.Nodes.First()).ToString());
+
+				case "Symbol": return new Token(Node.Input.Name, OnDeserialize(Node.Nodes.First()).ToString());
+
+				case "String":
+					return new Token(Node.Input.Name, string.Join("", Node.Nodes.Select(item => ((Token)OnDeserialize(item)).Value)));
+				default:
+					sb = new StringBuilder();
+					foreach (IBaseNode<char> sn in Node.Nodes)
+					{
+						sb.Append(OnDeserialize(sn));
+					}
+					return sb.ToString();
 			}
 
-			sb = new StringBuilder();
-			foreach (IBaseNode<char> sn in Node.Nodes)
-			{
-				sb.Append(OnDeserialize(sn));
-			}
-			return sb.ToString();
 
 
 
 		}
-		protected string OnDeserialize(IBaseNode<char> Node)
+		protected override object OnDeserializeTerminalNode(ITerminalNode<char> Node)
 		{
-			switch(Node)
-			{
-				case INonTerminalNode<char> nt:return OnDeserialize(nt);
-				case ITerminalNode<char> t:return t.Input.Value.ToString();
-			}
-
-			return "";
+			return Node.Input.Value;
 		}
+
+		/*public Token Deserialize(INonTerminalNode<char> Node)
+		{
+			return new Token(Node.Input.Name, OnDeserialize(Node));
+		}*/
+
+
 
 
 
