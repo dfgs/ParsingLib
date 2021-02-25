@@ -48,7 +48,7 @@
     <Compile Include="Readers\Lexer.cs" />
     <Compile Include="RuleLexer.cs" />
     <Compile Include="RuleLexerAutomaton.cs" />
-    <Compile Include="RuleNodeDeserializer.cs" />
+    <Compile Include="TokenDeserializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\FSMLib\FSMLib.Common\FSMLib.Common.csproj">

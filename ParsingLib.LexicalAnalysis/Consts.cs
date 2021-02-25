@@ -1,4 +1,5 @@
 ﻿
+using FSMLib.Common.Attributes;
 using FSMLib.Common.Situations;
 using FSMLib.Common.Table;
 using FSMLib.Common.Tables;
@@ -42,6 +43,7 @@ namespace ParsingLib.LexicalAnalysis
 			IRule<char>[] rules;
 
 			symbol = new LexicalRule() { IsAxiom = true, Name = "Symbol" };
+			symbol.Attributes.Add(new DeserializerAttribute(typeof(TokenDeserializer)));
 			symbol.Predicate =CompletePredicate( new Or(
 				new Terminal('['),
 				new Terminal(']'),
@@ -68,9 +70,11 @@ namespace ParsingLib.LexicalAnalysis
 			nonEscapedChar.Predicate = CompletePredicate( new ExceptTerminalsList('[', ']', '{', '}', '.', '+', '*', '?', '|', ';', '=', '!', '\\') );
 
 			letter = new LexicalRule() { IsAxiom = true, Name = "Letter" };
+			letter.Attributes.Add(new DeserializerAttribute(typeof(TokenDeserializer)));
 			letter.Predicate = CompletePredicate( new Or(new NonTerminal("NonEscapedChar"), new NonTerminal("EscapedChar")) );
 
 			_string = new LexicalRule() { IsAxiom = true, Name = "String" };
+			_string.Attributes.Add(new DeserializerAttribute(typeof(TokenDeserializer)));
 			_string.Predicate = CompletePredicate( new OneOrMore() { Item= new NonTerminal("Letter") } );
 
 			rules = new IRule<char>[] { symbol,escapedChar,nonEscapedChar,letter,_string };

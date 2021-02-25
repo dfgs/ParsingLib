@@ -46,9 +46,13 @@
     <Compile Include="Exceptions\UnexpectedInputException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\AutomatonReader.cs" />
-    <Compile Include="BaseNodeDeserializer.cs" />
+    <Compile Include="NodeDeserializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FSMLib\FSMLib.Common\FSMLib.Common.csproj">
+      <Project>{7E207AEB-52C7-4F97-93D3-6218F4F7C30E}</Project>
+      <Name>FSMLib.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FSMLib\FSMLib.SyntaxisAnalysis\FSMLib.SyntaxicAnalysis.csproj">
       <Project>{CE4F6AB3-3C53-4419-86F6-E89F23813DA6}</Project>
       <Name>FSMLib.SyntaxicAnalysis</Name>

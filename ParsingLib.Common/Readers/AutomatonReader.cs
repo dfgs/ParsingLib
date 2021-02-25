@@ -46,6 +46,7 @@ namespace ParsingLib.Common.Readers
 			int currentPosition;
 			StringBuilder sb;
 			INonTerminalNode<T> node;
+			object result;
 
 			currentPosition = itemReader.GetPosition();
 			if (itemReader.EOF) throw new UnexpectedEndOfStreamException(currentPosition);
@@ -78,7 +79,10 @@ namespace ParsingLib.Common.Readers
 			itemReader.Seek(currentPosition);
 			node = automaton.Accept();
 
-			return (TResult)deserializer.Deserialize(node);
+			result = deserializer.Deserialize(node);
+			if (result == null) throw new InvalidCastException("Failed to deserialize node");
+
+			return (TResult)result;
 
 		}
 	}

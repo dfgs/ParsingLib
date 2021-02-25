@@ -30,7 +30,7 @@ namespace ParsingLib.LexicalAnalysis.UnitTest
 			}
 		}
 
-		[TestMethod]
+		/*[TestMethod]
 		public void ShouldReadEscapedLetter()
 		{
 			RuleLexer lexer;
@@ -64,7 +64,7 @@ namespace ParsingLib.LexicalAnalysis.UnitTest
 				Assert.AreEqual("Letter", token.Class);
 				Assert.AreEqual(data, token.Value);
 			}
-		}
+		}*/
 		[TestMethod]
 		public void ShouldReadString()
 		{

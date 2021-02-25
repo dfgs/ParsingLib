@@ -45,7 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\IParser.cs" />
     <Compile Include="Readers\Parser.cs" />
-    <Compile Include="LexicalRuleNodeDeserializer.cs" />
     <Compile Include="LexicalRuleParserAutomaton.cs" />
     <Compile Include="LexicalRuleParser.cs" />
   </ItemGroup>

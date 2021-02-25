@@ -1,4 +1,5 @@
 ﻿using FSMLib.Automatons;
+using ParsingLib.Common;
 using ParsingLib.Common.Readers;
 using ParsingLib.LexicalAnalysis.Readers;
 using ParsingLib.Readers;
@@ -16,7 +17,7 @@ namespace ParsingLib.LexicalAnalysis
 		{
 
 		}
-		private RuleLexer(IAutomaton<char> Automaton, ICharReader Reader) : base(Automaton,Reader,new RuleNodeDeserializer())
+		private RuleLexer(IAutomaton<char> Automaton, ICharReader Reader) : base(Automaton,Reader,new NodeDeserializer<char>())
 		{
 		}
 	}

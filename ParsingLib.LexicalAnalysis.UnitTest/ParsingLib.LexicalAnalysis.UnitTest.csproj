@@ -55,7 +55,7 @@
     <Compile Include="Mocks\MockedNodeDeserializer.cs" />
     <Compile Include="Mocks\MockedSequenceAutomaton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RuleNodeDeserializerUnitTest.cs" />
+    <Compile Include="NodeDeserializerUnitTest.cs" />
     <Compile Include="RuleLexerUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>

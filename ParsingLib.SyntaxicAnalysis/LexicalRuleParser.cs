@@ -1,6 +1,7 @@
 ﻿using FSMLib.Automatons;
 using FSMLib.Rules;
 using FSMLib.SyntaxicAnalysis;
+using ParsingLib.Common;
 using ParsingLib.Common.Readers;
 using ParsingLib.Readers;
 using ParsingLib.SyntaxicAnalysis.Readers;
@@ -12,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace ParsingLib.SyntaxicAnalysis
 {
-	public class LexicalRuleParser : Parser<IRule<char>>
+	public class LexicalRuleParser : Parser<IRule<Token>>
 	{
 		public LexicalRuleParser(IReader<Token> Reader):this(new LexicalRuleParserAutomaton(),Reader)
 		{
 
 		}
-		private LexicalRuleParser(IAutomaton<Token> Automaton, IReader<Token> Reader) : base(Automaton,Reader,new LexicalRuleNodeDeserializer())
+		private LexicalRuleParser(IAutomaton<Token> Automaton, IReader<Token> Reader) : base(Automaton,Reader,new NodeDeserializer<Token>())
 		{
 		}
 	}

@@ -16,16 +16,16 @@ namespace ParsingLib.SyntaxicAnalysis.UnitTest
 		{
 			LexicalRuleParser parser;
 			IReader<Token> tokenReader;
-			IRule<char> rule;
+			IRule<Token> rule;
 
 			tokenReader = new MockedTokenReader(
-				new Token("String", "Rule"),
+				new Token("String", "MyRule"),
 				new Token("Symbol", "=")
 				); ;
 			parser = new LexicalRuleParser(tokenReader);
 
 			rule = parser.Read();
-			Assert.AreEqual("Rule", rule.Name);
+			Assert.AreEqual("MyRule", rule.Name);
 			Assert.IsFalse(rule.IsAxiom) ;
 			Assert.IsNotNull(rule.Predicate);
 		}
